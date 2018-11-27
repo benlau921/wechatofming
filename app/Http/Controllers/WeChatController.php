@@ -23,7 +23,11 @@ class WeChatController extends Controller
         $app = app('wechat.official_account');
         $app->server->push(function($message){
             $text = new Text('hello Ben Ben');
-            return $text;
+            $mediaID = "rpxllVIKNM1p1UjXqePh--y5JDli2zYp9_1SXhS-SJWxW_6VstYv85FvC_9hLxb9";
+            $image = new Image($mediaID);
+
+
+            return $image;
         });
 
         return $app->server->serve();
