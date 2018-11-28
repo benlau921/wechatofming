@@ -39,8 +39,8 @@ class WeChatController extends Controller
                     ],
                     [
                         "type" => "click",
-                        "name" => "赞一下我们",
-                        "key" => "V1001_GOOD"
+                        "name" => "ben",
+                        "key" => "ben"
                     ],
                 ],
             ],
@@ -94,7 +94,12 @@ class WeChatController extends Controller
                     $image = new Image($mediaID);
                     return $image;
                 case 'event':
-                    return "link message";
+                    switch($message['EventKey']){
+                        case 'items':
+                            return "items";
+                        case 'ben':
+                            return "ben";
+                    }
 
                 default:
                     return "hello2";
