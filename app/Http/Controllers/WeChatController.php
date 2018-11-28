@@ -10,41 +10,16 @@ use EasyWeChat\Kernel\Messages\Image;
 use EasyWeChat\Kernel\Messages\Article;
 use EasyWeChat\Kernel\Messages\News;
 use EasyWeChat\Kernel\Messages\NewsItem;
+use App\Library\CreateNewMenu;
 
 class WeChatController extends Controller
 {
     public function serve()
     {
-        $hello = "hello";
         $app = app('wechat.official_account');
 
-        $buttons = [
-            [
-                "type" => "click",
-                "name" => "今日歌曲",
-                "key"  => "items"
-            ],
-            [
-                "name"       => "菜单",
-                "sub_button" => [
-                    [
-                        "type" => "view",
-                        "name" => "搜索",
-                        "url"  => "http://www.soso.com/"
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "视频",
-                        "url"  => "http://v.qq.com/"
-                    ],
-                    [
-                        "type" => "click",
-                        "name" => "benlau921",
-                        "key" => "ben"
-                    ],
-                ],
-            ],
-        ];
+        $menu = new CreateNewMenu();
+        $buttons = $menu->createMenu();
         $app->menu->create($buttons);
 
 
