@@ -13,11 +13,9 @@ use EasyWeChat\Kernel\Messages\NewsItem;
 
 class WeChatController extends Controller
 {
-
-
-
     public function serve()
     {
+        $hello = "hello";
         $app = app('wechat.official_account');
 
         $buttons = [
@@ -41,7 +39,7 @@ class WeChatController extends Controller
                     ],
                     [
                         "type" => "click",
-                        "name" => "ben",
+                        "name" => "benlau921",
                         "key" => "ben"
                     ],
                 ],
@@ -106,9 +104,7 @@ class WeChatController extends Controller
                 default:
                     return "hello2";
             }
-  //          return $image;
         });
-
         return $app->server->serve();
     }
 }
