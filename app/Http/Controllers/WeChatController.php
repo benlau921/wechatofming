@@ -8,9 +8,9 @@ use EasyWeChat\Kernel\Messages;
 use EasyWeChat\Kernel\Messages\Text;
 use EasyWeChat\Kernel\Messages\Image;
 use EasyWeChat\Kernel\Messages\Article;
-use EasyWeChat\Kernel\Messages\News;
-use EasyWeChat\Kernel\Messages\NewsItem;
 use App\Library\CreateNewMenu;
+use App\Library\CreateNews;
+
 
 class WeChatController extends Controller
 {
@@ -44,6 +44,7 @@ class WeChatController extends Controller
                             */
                         case 'items':
                         case 'Item':
+                            /*
                             $title = "ben";
                             $url = "http://www.orderlikepnv.com/";
                             $image = "http://www.orderlikepnv.com/wp-content/uploads/2017/06/transparent-background-Orderlike-black1.png";
@@ -57,6 +58,10 @@ class WeChatController extends Controller
                             ];
                             $news = new News($items);
                             return $news;
+                            */
+                            $news = new CreateNews();
+                            $newsItem = $news->createNews();
+                            return $newsItem;
                             break;
 
                         default:
