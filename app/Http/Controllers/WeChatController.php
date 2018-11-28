@@ -32,7 +32,6 @@ class WeChatController extends Controller
                             $userOpenID = $message['FromUserName'];
                             return "hello" . $userOpenID;
                             break;
-                            /*
                         case 'article':
                             $article = new Article([
                                 'title'   => 'Ben Lau',
@@ -41,10 +40,9 @@ class WeChatController extends Controller
                             ]);
                             return $article;
                             break;
-                            */
                         case 'user':
                             //return "Hello ".$user.". Thank you for your subscription";
-                            return "".$user;
+                            return $user->get('nickname');
                         case 'items':
                         case 'Item':
                         $news = createNews::createNews();
