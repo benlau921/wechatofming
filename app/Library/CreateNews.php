@@ -24,6 +24,19 @@ class CreateNews
                 'url'         => $url,
                 'image'       => $image,
             ]),
+            new NewsItem([
+                'title'       => $title,
+                'description' => 'Thanks for your attention',
+                'url'         => $url,
+                'image'       => $image,
+            ]),
+            new NewsItem([
+                'title'       => $title,
+                'description' => 'Love you and see you.',
+                'url'         => $url,
+                'image'       => $image,
+            ])
+
         ];
         $news = new News($items);
         return $news;
