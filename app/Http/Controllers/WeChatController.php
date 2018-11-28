@@ -43,7 +43,8 @@ class WeChatController extends Controller
                             break;
                             */
                         case 'user':
-                            return "Hello ".$user->nickname.". Thank you for your subscription";
+                            //return "Hello ".$user.". Thank you for your subscription";
+                            return "".$user;
                         case 'items':
                         case 'Item':
                             $news = new CreateNews();
