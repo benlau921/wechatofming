@@ -21,7 +21,6 @@ class WeChatController extends Controller
             // print_r($message);
             switch ($message['MsgType']){
                 case 'text':
-                    $content = $message->Content;
                     return "hello";
                     break;
                 case 'image':
