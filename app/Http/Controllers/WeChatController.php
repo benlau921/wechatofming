@@ -21,10 +21,10 @@ class WeChatController extends Controller
         $menu = new CreateNewMenu();
         $buttons = $menu->createMenu();
         $app->menu->create($buttons);
-
+        $user = $app->user;
 
         Log::info('request arrived.');
-        $app->server->push(function($message){
+        $app->server->push(function($message) use ($user){
             switch ($message['MsgType']){
                 case 'text':
                     switch ($message['Content']) {
@@ -44,21 +44,6 @@ class WeChatController extends Controller
                             */
                         case 'items':
                         case 'Item':
-                            /*
-                            $title = "ben";
-                            $url = "http://www.orderlikepnv.com/";
-                            $image = "http://www.orderlikepnv.com/wp-content/uploads/2017/06/transparent-background-Orderlike-black1.png";
-                            $items = [
-                                new NewsItem([
-                                    'title'       => $title,
-                                    'description' => '...',
-                                    'url'         => $url,
-                                    'image'       => $image,
-                                ]),
-                            ];
-                            $news = new News($items);
-                            return $news;
-                            */
                             $news = new CreateNews();
                             $newsItem = $news->createNews();
                             return $newsItem;
@@ -69,7 +54,7 @@ class WeChatController extends Controller
                             break;
                     }
                 case 'image':
-                    $mediaID = "rpxllVIKNM1p1UjXqePh--y5JDli2zYp9_1SXhS-SJWxW_6VstYv85FvC_9hLxb9";
+//                    $mediaID = "rpxllVIKNM1p1UjXqePh--y5JDli2zYp9_1SXhS-SJWxW_6VstYv85FvC_9hLxb9";
                     $mediaID  = $message['MediaId'];
                     $image = new Image($mediaID);
                     return $image;
@@ -84,7 +69,7 @@ class WeChatController extends Controller
                     }
 
                 default:
-                    return "hello2";
+                    return "Hello ".$user['nickname'].". Thank you for your subscription";
             }
         });
         return $app->server->serve();
