@@ -21,12 +21,13 @@ class WeChatController extends Controller
             // print_r($message);
             switch ($message['MsgType']){
                 case 'text':
-                    return "hello";
+                    $userOpenID = $message['FromUserName'];
+                    return "hello".$userOpenID;
                     break;
                 case 'image':
                     $mediaID = "rpxllVIKNM1p1UjXqePh--y5JDli2zYp9_1SXhS-SJWxW_6VstYv85FvC_9hLxb9";
-                    $mediaId  = $message->MediaId;
-                    $image = new Image($mediaId);
+                    //$mediaId  = $message->MediaId;
+                    $image = new Image($mediaID);
                     return $image;
                 default:
                     return "hello2";
