@@ -31,7 +31,7 @@ class WeChatController extends Controller
                             $article = new Article([
                                 'title'   => 'Ben Lau',
                                 'author'  => 'Ben Lau',
-                                'content' => '.. .......',
+                                'content' => '.. .......'
                             ]);
                             return $article;
                             break;
