@@ -93,7 +93,7 @@ class WeChatController extends Controller
                     $mediaID  = $message['MediaId'];
                     $image = new Image($mediaID);
                     return $image;
-                case 'link':
+                case 'event':
                     return "link message";
 
                 default:
