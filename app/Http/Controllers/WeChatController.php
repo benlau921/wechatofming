@@ -12,22 +12,27 @@ use EasyWeChat\Kernel\Messages\Image;
 class WeChatController extends Controller
 {
 
-    /**
-     * 处理微信的请求消息
-     *
-     * @return string
-     */
     public function serve()
     {
-        Log::info('request arrived.'); # 注意：Log 为 Laravel 组件，所以它记的日志去 Laravel 日志看，而不是 EasyWeChat 日志
+        Log::info('request arrived.');
         $app = app('wechat.official_account');
         $app->server->push(function($message){
-            $text = new Text('hello Ben Ben');
+            // header('Content-Type: text/json');
+            // print_r($message);
+            switch ($message['MsgType']){
+                case 'text':
+                    return "hello";
+                    break;
+                default:
+                    return "hello2";
+            }
+            /*
+            $text = new Text('hello Ben');
             $mediaID = "rpxllVIKNM1p1UjXqePh--y5JDli2zYp9_1SXhS-SJWxW_6VstYv85FvC_9hLxb9";
             $image = new Image($mediaID);
+*/
 
-
-            return $image;
+  //          return $image;
         });
 
         return $app->server->serve();
