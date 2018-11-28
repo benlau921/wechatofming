@@ -15,20 +15,20 @@ class CreateNewMenu
         $buttons = [
         [
         "type" => "click",
-        "name" => "今日歌曲",
+        "name" => "Orderlike",
         "key"  => "items"
         ],
         [
-        "name"       => "菜单",
+        "name"       => "Testing",
         "sub_button" => [
         [
         "type" => "view",
-        "name" => "搜索",
+        "name" => "Order",
         "url"  => "http://www.soso.com/"
         ],
         [
         "type" => "view",
-        "name" => "视频",
+        "name" => "What",
         "url"  => "http://v.qq.com/"
         ],
         [
