@@ -13,7 +13,7 @@ use EasyWeChat\Kernel\Messages\News;
 
 class CreateNews
 {
-    public static function createNews(){
+    public function createNews(){
         $title = "ben";
         $url = "http://www.orderlikepnv.com/";
         $image = "http://www.orderlikepnv.com/wp-content/uploads/2017/06/transparent-background-Orderlike-black1.png";
