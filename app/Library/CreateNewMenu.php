@@ -36,6 +36,11 @@ class CreateNewMenu
         "name" => "benlau921",
         "key" => "ben"
         ],
+        [
+        "type" => "pic_sysphoto",
+        "name" => "benlau921",
+        "key" => "ben"
+        ],
         ],
         ],
         ];

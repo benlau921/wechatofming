@@ -25,8 +25,6 @@ class WeChatController extends Controller
 
         Log::info('request arrived.');
         $app->server->push(function($message){
-            // header('Content-Type: text/json');
-            // print_r($message);
             switch ($message['MsgType']){
                 case 'text':
                     switch ($message['Content']) {
@@ -34,6 +32,7 @@ class WeChatController extends Controller
                             $userOpenID = $message['FromUserName'];
                             return "hello" . $userOpenID;
                             break;
+                            /*
                         case 'article':
                             $article = new Article([
                                 'title'   => 'Ben Lau',
@@ -42,6 +41,7 @@ class WeChatController extends Controller
                             ]);
                             return $article;
                             break;
+                            */
                         case 'items':
                         case 'Item':
                             $title = "ben";
