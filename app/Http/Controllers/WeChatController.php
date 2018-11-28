@@ -25,7 +25,8 @@ class WeChatController extends Controller
                     break;
                 case 'image':
                     $mediaID = "rpxllVIKNM1p1UjXqePh--y5JDli2zYp9_1SXhS-SJWxW_6VstYv85FvC_9hLxb9";
-                    $image = new Image($mediaID);
+                    $mediaId  = $message->MediaId;
+                    $image = new Image($mediaId);
                     return $image;
                 default:
                     return "hello2";
