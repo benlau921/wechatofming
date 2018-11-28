@@ -38,18 +38,19 @@ class WeChatController extends Controller
                             break;
                         case 'items':
                         case 'Item':
-                        $title = "ben";
-                        $url = "http://www.orderlikepnv.com/";
-                        $image = "http://www.orderlikepnv.com/wp-content/uploads/2017/06/transparent-background-Orderlike-black1.png";
-                        $items = [
-                            new NewsItem([
-                                'title'       => $title,
-                                'description' => '...',
-                                'url'         => $url,
-                                'image'       => $image,
-                            ]),
-                        ];
-                        $news = new News($items);
+                            $title = "ben";
+                            $url = "http://www.orderlikepnv.com/";
+                            $image = "http://www.orderlikepnv.com/wp-content/uploads/2017/06/transparent-background-Orderlike-black1.png";
+                            $items = [
+                                new NewsItem([
+                                    'title'       => $title,
+                                    'description' => '...',
+                                    'url'         => $url,
+                                    'image'       => $image,
+                                ]),
+                            ];
+                            $news = new News($items);
+                            return $news;
                             break;
 
                         default:
