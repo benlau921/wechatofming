@@ -14,6 +14,8 @@ use EasyWeChat\Kernel\Messages\NewsItem;
 class WeChatController extends Controller
 {
 
+
+
     public function serve()
     {
         $app = app('wechat.official_account');
@@ -96,7 +98,7 @@ class WeChatController extends Controller
                 case 'event':
                     switch($message['EventKey']){
                         case 'items':
-                            return "items";
+                            return "itemsssss";
                         case 'ben':
                             return "ben";
                     }
