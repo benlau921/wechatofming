@@ -22,7 +22,7 @@ class WeChatController extends Controller
             switch ($message['MsgType']){
                 case 'text':
                     $content = $message->Content;
-                    return $content;
+                    return "hello";
                     break;
                 case 'image':
                     $mediaID = "rpxllVIKNM1p1UjXqePh--y5JDli2zYp9_1SXhS-SJWxW_6VstYv85FvC_9hLxb9";
