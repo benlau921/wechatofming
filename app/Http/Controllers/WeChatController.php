@@ -16,8 +16,39 @@ class WeChatController extends Controller
 
     public function serve()
     {
-        Log::info('request arrived.');
         $app = app('wechat.official_account');
+
+        $buttons = [
+            [
+                "type" => "click",
+                "name" => "今日歌曲",
+                "key"  => "V1001_TODAY_MUSIC"
+            ],
+            [
+                "name"       => "菜单",
+                "sub_button" => [
+                    [
+                        "type" => "view",
+                        "name" => "搜索",
+                        "url"  => "http://www.soso.com/"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "视频",
+                        "url"  => "http://v.qq.com/"
+                    ],
+                    [
+                        "type" => "click",
+                        "name" => "赞一下我们",
+                        "key" => "V1001_GOOD"
+                    ],
+                ],
+            ],
+        ];
+        $app->menu->create($buttons);
+
+
+        Log::info('request arrived.');
         $app->server->push(function($message){
             // header('Content-Type: text/json');
             // print_r($message);
