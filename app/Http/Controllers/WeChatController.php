@@ -22,7 +22,7 @@ class WeChatController extends Controller
             // print_r($message);
             switch ($message['MsgType']){
                 case 'text':
-                    switch ($message('content')) {
+                    switch ('$message') {
                         case 'hello':
                             $userOpenID = $message['FromUserName'];
                             return "hello" . $userOpenID;
