@@ -23,15 +23,13 @@ class WeChatController extends Controller
                 case 'text':
                     return "hello";
                     break;
+                case 'image':
+                    $mediaID = "rpxllVIKNM1p1UjXqePh--y5JDli2zYp9_1SXhS-SJWxW_6VstYv85FvC_9hLxb9";
+                    $image = new Image($mediaID);
+                    return $image;
                 default:
                     return "hello2";
             }
-            /*
-            $text = new Text('hello Ben');
-            $mediaID = "rpxllVIKNM1p1UjXqePh--y5JDli2zYp9_1SXhS-SJWxW_6VstYv85FvC_9hLxb9";
-            $image = new Image($mediaID);
-*/
-
   //          return $image;
         });
 
