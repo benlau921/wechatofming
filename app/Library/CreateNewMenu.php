@@ -38,7 +38,7 @@ class CreateNewMenu
         ],
         [
         "type" => "pic_sysphoto",
-        "name" => "benlau921",
+        "name" => "Take a photo",
         "key" => "ben"
         ],
         ],
