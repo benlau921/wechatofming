@@ -76,9 +76,11 @@ class WeChatController extends Controller
                 case 'event':
                     switch($message['EventKey']){
                         case 'items':
-                            return "itemsssss";
+                            $news = new CreateNews();
+                            $newsItem = $news->createNews();
+                            return $newsItem;
                         case 'ben':
-                            return "ben";
+                        return "ben";
                     }
 
                 default:
