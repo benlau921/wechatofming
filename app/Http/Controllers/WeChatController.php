@@ -55,7 +55,7 @@ class WeChatController extends Controller
                                             <CreateTime>1543481824</CreateTime>
                                             </xml>");
 
-                            return $mess;
+                            return "hello";
                             break;
                         case 'user':
                             //return "Hello ".$user.". Thank you for your subscription";
