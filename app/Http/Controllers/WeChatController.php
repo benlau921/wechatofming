@@ -42,7 +42,7 @@ class WeChatController extends Controller
                             return $article;
                             break;
                         case 'raw':
-                            $mess = new Raw("<xml>
+                            $mess = new Raw('<xml>
                                             <ToUserName>
                                             <![CDATA[ oF2FF0TLLu_P2X0suR0X9iL63wBc ]]>
                                             </ToUserName>
@@ -56,7 +56,7 @@ class WeChatController extends Controller
                                             <![CDATA[ hello world ]]>
                                             </Content>
 
-                                            </xml>");
+                                            </xml>');
 
                             return $mess;
                             break;
