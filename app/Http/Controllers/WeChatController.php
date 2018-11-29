@@ -28,7 +28,10 @@ class WeChatController extends Controller
                     switch ($message['Content']) {
                         case 'hello':
                             $userOpenID = $message['FromUserName'];
-                            return "hello" . $userOpenID;
+                            return $userOpenID;
+                            break;
+                        case 'hello2':
+                            return $message['ToUserName'];;
                             break;
                         case 'article':
                             $article = new Article([
@@ -55,7 +58,7 @@ class WeChatController extends Controller
 
                                             </xml>");
 
-                            return "hello";
+                            return $mess;
                             break;
                         case 'user':
                             //return "Hello ".$user.". Thank you for your subscription";
