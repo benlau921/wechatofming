@@ -44,10 +44,10 @@ class WeChatController extends Controller
                         case 'raw':
                             $mess = new Raw("<xml>
                                             <ToUserName>
-                                            <![CDATA[".$message['FromUserName']."]]>
+                                            <![CDATA[ oF2FF0TLLu_P2X0suR0X9iL63wBc ]]>
                                             </ToUserName>
                                             <FromUserName>
-                                            <![CDATA[".$message['ToUserName']." ]]>
+                                            <![CDATA[ gh_0382299d76d0 ]]>
                                             </FromUserName>
                                             <MsgType>
                                             <![CDATA[ text ]]>
