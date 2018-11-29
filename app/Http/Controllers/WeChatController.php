@@ -40,19 +40,19 @@ class WeChatController extends Controller
                             break;
                         case 'raw':
                             $mess = new Raw("<xml>
-                                            <MsgType>
-                                            <![CDATA[ text ]]>
-                                            </MsgType>
-                                            <Content>
-                                            <![CDATA[ hello world ]]>
-                                            </Content>
                                             <ToUserName>
                                             <![CDATA[".$message['FromUserName']."]]>
                                             </ToUserName>
                                             <FromUserName>
                                             <![CDATA[".$message['ToUserName']." ]]>
                                             </FromUserName>
-                                            <CreateTime>1543481824</CreateTime>
+                                            <MsgType>
+                                            <![CDATA[ text ]]>
+                                            </MsgType>
+                                            <Content>
+                                            <![CDATA[ hello world ]]>
+                                            </Content>
+
                                             </xml>");
 
                             return "hello";
