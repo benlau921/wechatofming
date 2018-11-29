@@ -11,7 +11,7 @@ namespace App\Library;
 
 class CreateNewMenu
 {
-    public function createMenu(){
+    public static function createMenu(){
         $buttons = [
         [
         "type" => "click",

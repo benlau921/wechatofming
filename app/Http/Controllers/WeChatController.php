@@ -10,7 +10,7 @@ use EasyWeChat\Kernel\Messages\Image;
 use EasyWeChat\Kernel\Messages\Article;
 use App\Library\CreateNewMenu;
 use App\Library\CreateNews;
-
+use EasyWeChat\Kernel\Messages\Raw;
 
 class WeChatController extends Controller
 {
@@ -18,13 +18,11 @@ class WeChatController extends Controller
     {
         $app = app('wechat.official_account');
 
-        $menu = new CreateNewMenu();
-        $buttons = $menu->createMenu();
-        $app->menu->create($buttons);
-        $user = $app->user;
+        //$menu = new CreateNewMenu();
+        $app->menu->create(CreateNewMenu::createMenu());
 
         Log::info('request arrived.');
-        $app->server->push(function($message) use ($user){
+        $app->server->push(function($message){
             switch ($message['MsgType']){
                 case 'text':
                     switch ($message['Content']) {
@@ -40,14 +38,32 @@ class WeChatController extends Controller
                             ]);
                             return $article;
                             break;
+                        case 'raw':
+                            $mess = new Raw('<xml>
+                                            <MsgType>
+                                            <![CDATA[ text ]]>
+                                            </MsgType>
+                                            <Content>
+                                            <![CDATA[ hello world ]]>
+                                            </Content>
+                                            <ToUserName>
+                                            <![CDATA[ ]]>
+                                            </ToUserName>
+                                            <FromUserName>
+                                            <![CDATA[ ]]>
+                                            </FromUserName>
+                                            <CreateTime>1543481824</CreateTime>
+                                            </xml>');
+                            return $mess;
+                            break;
                         case 'user':
                             //return "Hello ".$user.". Thank you for your subscription";
                             return $user->get('nickname');
                         case 'items':
                         case 'Item':
-                        $news = createNews::createNews();
-                        return $news;
-                        break;
+                            $news = createNews::createNews();
+                            return $news;
+                            break;
 
                         default:
                             return "hello Ben";
@@ -64,13 +80,15 @@ class WeChatController extends Controller
                             $news = createNews::createNews();
                             return $news;
                         case 'ben':
-                        return "ben";
+                            return "ben";
                     }
 
                 default:
-                    return "Hello ".$user['nickname'].". Thank you for your subscription";
+                    return
+                        "Thank you for your subscription";
             }
         });
+
         return $app->server->serve();
     }
 }

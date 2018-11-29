@@ -31,3 +31,15 @@
 [2018-11-28 02:20:00] NULL.DEBUG: Request received: {"method":"GET","uri":"http://localhost:8000/wechat","content-type":null,"content":""} 
 [2018-11-28 02:20:00] NULL.ERROR: 0: Undefined index: MsgType {"code":0,"message":"Undefined index: MsgType","file":"C:\\Users\\bensh\\Desktop\\laravel_wechat\\wechatbot\\app\\Http\\Controllers\\WeChatController.php","line":22} 
 [2018-11-28 02:20:00] NULL.DEBUG: Server response created: {"content":"success"} 
+[2018-11-29 01:58:37] NULL.DEBUG: Request received: {"method":"GET","uri":"http://localhost:8000/wechat","content-type":null,"content":""} 
+[2018-11-29 01:58:37] NULL.DEBUG: Server response created: {"content":"success"} 
+[2018-11-29 02:04:06] NULL.DEBUG: Request received: {"method":"GET","uri":"http://localhost:8000/wechat","content-type":null,"content":""} 
+[2018-11-29 02:04:06] NULL.DEBUG: Server response created: {"content":"success"} 
+[2018-11-29 02:07:47] NULL.DEBUG: Request received: {"method":"GET","uri":"http://localhost:8000/wechat","content-type":null,"content":""} 
+[2018-11-29 02:07:47] NULL.DEBUG: Server response created: {"content":"success"} 
+[2018-11-29 02:09:35] NULL.DEBUG: Request received: {"method":"GET","uri":"http://localhost:8000/wechat","content-type":null,"content":""} 
+[2018-11-29 02:09:35] NULL.ERROR: 0: Undefined index: MsgType {"code":0,"message":"Undefined index: MsgType","file":"C:\\Users\\bensh\\Desktop\\laravel_wechat\\wechatbot\\app\\Http\\Controllers\\WeChatController.php","line":27} 
+[2018-11-29 02:09:35] NULL.DEBUG: Server response created: {"content":"success"} 
+[2018-11-29 07:37:54] NULL.DEBUG: Request received: {"method":"GET","uri":"http://localhost:8000/wechat","content-type":null,"content":""} 
+[2018-11-29 07:37:54] NULL.ERROR: 0: Undefined index: MsgType {"code":0,"message":"Undefined index: MsgType","file":"C:\\Users\\bensh\\Desktop\\laravel_wechat\\wechatbot\\app\\Http\\Controllers\\WeChatController.php","line":26} 
+[2018-11-29 07:37:54] NULL.DEBUG: Server response created: {"content":"success"} 
