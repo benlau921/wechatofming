@@ -55,7 +55,6 @@ class WeChatController extends Controller
                                             <Content>
                                             <![CDATA[ hello world ]]>
                                             </Content>
-
                                             </xml>');
 
                             return $mess;
