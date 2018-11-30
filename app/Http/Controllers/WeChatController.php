@@ -20,7 +20,7 @@ class WeChatController extends Controller
 
         //$menu = new CreateNewMenu();
         $app->menu->create(CreateNewMenu::createMenu());
-        $rawxml = "'<xml><ToUserName><![CDATA[ oF2FF0TLLu_P2X0suR0X9iL63wBc ]]></ToUserName><FromUserName><![CDATA[ gh_0382299d76d0 ]]></FromUserName><MsgType><![CDATA[ text ]]></MsgType><Content><![CDATA[ hello world ]]></Content></xml>'";
+        //$rawxml = "'<xml><ToUserName><![CDATA[ oF2FF0TLLu_P2X0suR0X9iL63wBc ]]></ToUserName><FromUserName><![CDATA[ gh_0382299d76d0 ]]></FromUserName><MsgType><![CDATA[ text ]]></MsgType><Content><![CDATA[ hello world ]]></Content></xml>'";
 
         Log::info('request arrived.');
         $app->server->push(function($message) use($rawxml) {
@@ -43,7 +43,15 @@ class WeChatController extends Controller
                             return $article;
                             break;
                         case 'raw':
-                            $mess = new Raw($rawxml);
+                            $mess = new Raw('<xml>
+<ToUserName><![CDATA[oF2FF0TLLu_P2X0suR0X9iL63wBc]]></ToUserName>
+<FromUserName><![CDATA[gh_0382299d76d0]]></FromUserName>
+<CreateTime>1543481824</CreateTime>
+<MsgType><![CDATA[ text ]]></MsgType>
+<Image>
+<MediaId><![CDATA[ hello ]]></MediaId>
+</Image>
+</xml>');
 
                             return $mess;
                             break;
