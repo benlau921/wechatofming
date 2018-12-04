@@ -15,11 +15,11 @@ class CreateNewMenu
         $buttons = [
         [
         "type" => "click",
-        "name" => "Orderlike123123",
+        "name" => "Orderlike",
         "key"  => "items"
         ],
         [
-        "name"       => "TestingTesting",
+        "name"       => "Testing",
         "sub_button" => [
         [
         "type" => "view",
