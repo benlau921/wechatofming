@@ -16,26 +16,41 @@ class WeChatController extends Controller
 {
     public function serve()
     {
+        // db connection
+        //
+        //
+        //
+
         $app = app('wechat.official_account');
         $app->menu->delete(); // 全部
         $app->menu->create(CreateNewMenu::createMenu());
         Log::info('request arrived.');
 
+        $app->server->push(function($message)  {
 
-        $app->server->push(function($message) {
+            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+            $txt = "Mickey Mouse\n";
+            fwrite($myfile, $txt);
+            $txt = "Minnie Mouse\n";
+            fwrite($myfile, $txt);
+            fclose($myfile);
+
             switch ($message['MsgType']){
                 case 'text':
                     switch ($message['Content']) {
-                        case 'raw':
-                            $message123 = new Raw('{
-                                "touser":"OPENID",
-                                "msgtype":"text",
-                                "text":
-                                {
-                                     "content":"Hello World"
-                                }
-                            }');
-                            return $message123;
+                        case 'file':
+                            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+                            $txt = "Mickey Mouse\n";
+                            fwrite($myfile, $txt);
+                            $txt = "Minnie Mouse\n";
+                            fwrite($myfile, $txt);
+                            fclose($myfile);
+
+                            $myfile = fopen("newfile.txt", "r") or die("Unable to open file!");
+                            $content = fread($myfile,filesize("newfile.txt"));
+                            fclose($myfile);
+
+                            return $content;
                             break;
 
                         case 'hello':
@@ -72,9 +87,14 @@ class WeChatController extends Controller
                         case 'items':
                             $news = createNews::createNews();
                             return $news;
+                            break;
                         case 'ben':
+                            // if (stage 1) return ..
+                            // if (stage 2) return ..
+
                             return "ben123412431321";
-                    }
+                            break;
+                        }
 
                 default:
                     return
