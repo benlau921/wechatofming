@@ -21,10 +21,23 @@ class WeChatController extends Controller
         $app->menu->create(CreateNewMenu::createMenu());
         Log::info('request arrived.');
 
-        $app->server->push(function($message){
+
+        $app->server->push(function($message) {
             switch ($message['MsgType']){
                 case 'text':
                     switch ($message['Content']) {
+                        case 'raw':
+                            $message123 = new Raw('{
+                                "touser":"OPENID",
+                                "msgtype":"text",
+                                "text":
+                                {
+                                     "content":"Hello World"
+                                }
+                            }');
+                            return $message123;
+                            break;
+
                         case 'hello':
                             $userOpenID = $message['FromUserName'];
                             return $userOpenID;
