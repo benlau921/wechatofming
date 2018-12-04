@@ -46,7 +46,7 @@ class WeChatController extends Controller
                             return $news;
                             break;
                         case 'ben':
-                            return "benbenben";
+                            return "benhjdkehkjnben";
                             break;
                         default:
                             return "hello Ben";
