@@ -20,7 +20,7 @@ class CreateNews
         $items = [
             new NewsItem([
                 'title'       => $title,
-                'description' => '...',
+                'description' => 'halo halo',
                 'url'         => $url,
                 'image'       => $image,
             ]),
