@@ -99,7 +99,7 @@ class WeChatController extends Controller
 
                 default:
                     return
-                        "Thank you for your subscription";
+                        "Thank you for your subscription 1234567";
             }
         });
 
