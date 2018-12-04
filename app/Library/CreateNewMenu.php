@@ -34,7 +34,7 @@ class CreateNewMenu
                     [
                     "type" => "click",
                     "name" => "benlau921",
-                    "key" => "ben"
+                    "key" => "beneee"
                     ],
                     [
                     "type" => "pic_sysphoto",
