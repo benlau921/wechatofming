@@ -26,7 +26,7 @@ class WeChatController extends Controller
         //$rawxml = "'<xml><ToUserName><![CDATA[ oF2FF0TLLu_P2X0suR0X9iL63wBc ]]></ToUserName><FromUserName><![CDATA[ gh_0382299d76d0 ]]></FromUserName><MsgType><![CDATA[ text ]]></MsgType><Content><![CDATA[ hello world ]]></Content></xml>'";
 
         Log::info('request arrived.');
-        $app->server->push(function($message) {
+        $app->server->push(function($message) use ( $app ){
             $matchRule = [
                 "tag_id" => "2",
                 "sex" => "1",
