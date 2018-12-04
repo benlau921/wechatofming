@@ -40,12 +40,8 @@ class WeChatController extends Controller
                     switch ($message['Content']) {
                         case 'file':
                             $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-                            $txt = "Mickey Mouse\n";
-                            fwrite($myfile, $txt);
                             $txt = "Minnie Mouse\n";
                             fwrite($myfile, $txt);
-                            fclose($myfile);
-
                             $myfile = fopen("newfile.txt", "r") or die("Unable to open file!");
                             $content = fread($myfile,filesize("newfile.txt"));
                             fclose($myfile);
