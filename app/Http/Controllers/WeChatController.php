@@ -45,9 +45,6 @@ class WeChatController extends Controller
                             $news = createNews::createNews();
                             return $news;
                             break;
-                        case 'ben':
-                            return "benhjdkehkjnben";
-                            break;
                         default:
                             return "hello Ben";
                             break;
@@ -63,7 +60,7 @@ class WeChatController extends Controller
                             $news = createNews::createNews();
                             return $news;
                         case 'ben':
-                            return "ben";
+                            return "ben123412431321";
                     }
 
                 default:
