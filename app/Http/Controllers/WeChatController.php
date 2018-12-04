@@ -20,7 +20,7 @@ class WeChatController extends Controller
 
         //$menu = new CreateNewMenu();
 
-        $app->menu->delete(); // 全部
+        // $app->menu->delete(); // 全部
 
         //$app->menu->create(CreateNewMenu::createMenu());
         //$rawxml = "'<xml><ToUserName><![CDATA[ oF2FF0TLLu_P2X0suR0X9iL63wBc ]]></ToUserName><FromUserName><![CDATA[ gh_0382299d76d0 ]]></FromUserName><MsgType><![CDATA[ text ]]></MsgType><Content><![CDATA[ hello world ]]></Content></xml>'";
@@ -38,7 +38,7 @@ class WeChatController extends Controller
                 "user" => $message['FromUserName']
             ];
 
-        //    $app->menu->create(CreateNewMenu::createMenu(), $matchRule);
+            $app->menu->create(CreateNewMenu::createMenu(), $matchRule);
 
             switch ($message['MsgType']){
                 case 'text':
@@ -48,7 +48,7 @@ class WeChatController extends Controller
                             return $userOpenID;
                             break;
                         case 'hello2':
-                            return $message['ToUserName'];;
+                            return $message['ToUserName'];
                             break;
                         case 'article':
                             $article = new Article([
