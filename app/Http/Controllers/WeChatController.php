@@ -22,11 +22,11 @@ class WeChatController extends Controller
 
         // $app->menu->delete(); // 全部
 
-        //$app->menu->create(CreateNewMenu::createMenu());
+        $app->menu->create(CreateNewMenu::createMenu());
         //$rawxml = "'<xml><ToUserName><![CDATA[ oF2FF0TLLu_P2X0suR0X9iL63wBc ]]></ToUserName><FromUserName><![CDATA[ gh_0382299d76d0 ]]></FromUserName><MsgType><![CDATA[ text ]]></MsgType><Content><![CDATA[ hello world ]]></Content></xml>'";
 
         Log::info('request arrived.');
-        $app->server->push(function($message) use ($app) {
+        $app->server->push(function($message) {
             $matchRule = [
                 "tag_id" => "2",
                 "sex" => "1",
@@ -38,7 +38,7 @@ class WeChatController extends Controller
                 "user" => $message['FromUserName']
             ];
 
-            $app->menu->create(CreateNewMenu::createMenu(), $matchRule);
+            // $app->menu->create(CreateNewMenu::createMenu(), $matchRule);
 
             switch ($message['MsgType']){
                 case 'text':
