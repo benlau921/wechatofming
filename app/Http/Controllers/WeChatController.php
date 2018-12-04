@@ -17,31 +17,11 @@ class WeChatController extends Controller
     public function serve()
     {
         $app = app('wechat.official_account');
-
-        //$menu = new CreateNewMenu();
-
         $app->menu->delete(); // 全部
-
         $app->menu->create(CreateNewMenu::createMenu());
-        //$rawxml = "'<xml><ToUserName><![CDATA[ oF2FF0TLLu_P2X0suR0X9iL63wBc ]]></ToUserName><FromUserName><![CDATA[ gh_0382299d76d0 ]]></FromUserName><MsgType><![CDATA[ text ]]></MsgType><Content><![CDATA[ hello world ]]></Content></xml>'";
-
         Log::info('request arrived.');
 
         $app->server->push(function($message){
-        /*
-            $matchRule = [
-                "tag_id" => "2",
-                "sex" => "1",
-                "country" => "中国",
-                "province" => "广东",
-                "city" => "广州",
-                "client_platform_type" => "2",
-                "language" => "zh_CN",
-                "user" => $message['FromUserName']
-            ];
-
-            $app->menu->create(CreateNewMenu::createMenu(), $matchRule);
-         */
             switch ($message['MsgType']){
                 case 'text':
                     switch ($message['Content']) {
@@ -60,22 +40,6 @@ class WeChatController extends Controller
                             ]);
                             return $article;
                             break;
-                        case 'raw':
-                            $mess = new Raw('<xml>
-<ToUserName><![CDATA[oF2FF0TLLu_P2X0suR0X9iL63wBc]]></ToUserName>
-<FromUserName><![CDATA[gh_0382299d76d0]]></FromUserName>
-<CreateTime>1543481824</CreateTime>
-<MsgType><![CDATA[ text ]]></MsgType>
-<Image>
-<MediaId><![CDATA[ hello ]]></MediaId>
-</Image>
-</xml>');
-
-                            return $mess;
-                            break;
-                        case 'user':
-                            //return "Hello ".$user.". Thank you for your subscription";
-                            return $user->get('nickname');
                         case 'items':
                         case 'Item':
                             $news = createNews::createNews();
@@ -109,3 +73,25 @@ class WeChatController extends Controller
         return $app->server->serve();
     }
 }
+
+
+/*
+ *
+ *
+ *                         case 'raw':
+                            $mess = new Raw('<xml>
+<ToUserName><![CDATA[oF2FF0TLLu_P2X0suR0X9iL63wBc]]></ToUserName>
+<FromUserName><![CDATA[gh_0382299d76d0]]></FromUserName>
+<CreateTime>1543481824</CreateTime>
+<MsgType><![CDATA[ text ]]></MsgType>
+<Image>
+<MediaId><![CDATA[ hello ]]></MediaId>
+</Image>
+</xml>');
+
+                        case 'user':
+                            //return "Hello ".$user.". Thank you for your subscription";
+                            return $user->get('nickname');
+
+
+ * */
