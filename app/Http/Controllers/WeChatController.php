@@ -28,19 +28,14 @@ class WeChatController extends Controller
 
         $app->server->push(function($message)  {
 
-            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-            $txt = "Mickey Mouse\n";
-            fwrite($myfile, $txt);
-            $txt = "Minnie Mouse\n";
-            fwrite($myfile, $txt);
-            fclose($myfile);
+            $myfile = fopen("newfile.txt", "r") or die("Unable to open file!");
 
             switch ($message['MsgType']){
                 case 'text':
                     switch ($message['Content']) {
                         case 'file':
                             $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-                            $txt = "Minnie Mouse\n";
+                            $txt = sprintf("%s %s",$message['FromUserName'], 0);
                             fwrite($myfile, $txt);
                             $myfile = fopen("newfile.txt", "r") or die("Unable to open file!");
                             $content = fread($myfile,filesize("newfile.txt"));
