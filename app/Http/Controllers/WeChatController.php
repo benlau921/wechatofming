@@ -27,12 +27,11 @@ class WeChatController extends Controller
         Log::info('request arrived.');
 
         $app->server->push(function($message)  {
-
-            $myfile = fopen("newfile.txt", "r") or die("Unable to open file!");
-
+            // $myfile = fopen("newfile.txt", "r") or die("Unable to open file!");
             switch ($message['MsgType']){
                 case 'text':
                     switch ($message['Content']) {
+                        /*
                         case 'file':
                             $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
                             $txt = sprintf("%s %s",$message['FromUserName'], 0);
@@ -43,7 +42,7 @@ class WeChatController extends Controller
 
                             return $content;
                             break;
-
+                        */
                         case 'hello':
                             $userOpenID = $message['FromUserName'];
                             return $userOpenID;
