@@ -17,8 +17,8 @@ use EasyWeChat\Kernel\Messages\Raw;
 class WeChatController extends Controller {
 	public function serve() {
 		$app = app("wechat.official_account");
-		
-		// $app->menu->delete();
+        $app->menu->delete(); // 全部
+        // $app->menu->delete();
 		$app->menu->create([
 	    [ 
 	    	"name" => "Keying", 
@@ -115,6 +115,8 @@ class WeChatController extends Controller {
 						return "<a href = \"http://www.orderlikepnv.com/wp-external/wechat-show-jrn.php?ref=300015&jrntax=process-selfiemov-borrow\">Journal B</a>"."Journal B";
 						break;
 					case "jrn-process-c":
+                        return "<a href = \"http://www.orderlikepnv.com/wp-external/wechat-show-jrn.php?ref=300015&jrntax=process-selfiemov-borrow\">Journal B</a>"."Journal B";
+                        break;
 					case "jrn-process-d":
 					case "jrn-process-e":
 					case "jrn-process-f":
