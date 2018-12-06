@@ -8,116 +8,158 @@ use EasyWeChat\Kernel\Messages;
 use EasyWeChat\Kernel\Messages\Text;
 use EasyWeChat\Kernel\Messages\Image;
 use EasyWeChat\Kernel\Messages\Article;
-use App\Library\CreateNewMenu;
-use App\Library\CreateNews;
+// use App\Library\CreateNewMenu;
+// use App\Library\CreateNews;
+use EasyWeChat\Kernel\Messages\NewsItem;
+use EasyWeChat\Kernel\Messages\News;
 use EasyWeChat\Kernel\Messages\Raw;
 
-class WeChatController extends Controller
-{
-    public function serve()
-    {
-        // db connection
-        //
-        //
-        //
+class WeChatController extends Controller {
+	public function serve() {
+		$app = app("wechat.official_account");
+		
+		// $app->menu->delete();
+		$app->menu->create([
+	    [ 
+	    	"name" => "Keying", 
+	    	"sub_button" => [
+	      	[ "type" => "click", "name" => "Key B", "key" => "jrn-process-b" ],
+	      	[ "type" => "click", "name" => "Key D", "key" => "jrn-process-d" ],
+	      	[ "type" => "click", "name" => "Key E", "key" => "jrn-process-e" ],
+	      	[ "type" => "click", "name" => "Key F", "key" => "jrn-process-f" ],
+	      ],
+	    ],
+	    [ 
+	    	"name" => "Linking",
+	    	"sub_button" => [
+	      	[ "type" => "view", "name" => "Link B", "url"  => "http://www.orderlikepnv.com/wp-external/journaling.php?process=b" ],
+	      	[ "type" => "view", "name" => "Link D", "url"  => "http://www.orderlikepnv.com/wp-external/journaling.php?process=d" ],
+	      	[ "type" => "view", "name" => "Link E", "url"  => "http://www.orderlikepnv.com/wp-external/journaling.php?process=e" ],
+	      	[ "type" => "view", "name" => "Link F", "url"  => "http://www.orderlikepnv.com/wp-external/journaling.php?process=f" ],
+	      ],
+	    ],
+	    [ 
+	    	"name" => "Others",
+	    	"sub_button" => [
+	      	[ "type" => "click", "name" => "Orderlike", "key" => "orderlike" ],
+	      	[ "type" => "pic_sysphoto", "name" => "Take a photo", "key" => "take-a-photo" ],
+	      ],
+	    ],
+	  ]);
 
-        $app = app('wechat.official_account');
-        $app->menu->delete(); // 全部
-        $app->menu->create(CreateNewMenu::createMenu());
-        Log::info('request arrived.');
+		Log::info("request arrived.");
 
-        $app->server->push(function($message)  {
-            // $myfile = fopen("newfile.txt", "r") or die("Unable to open file!");
-            switch ($message['MsgType']){
-                case 'text':
-                    switch ($message['Content']) {
-                        case 'opopop':
-                            return "<a href = \"https://www.google.com.hk/\">eatshitdog</a>"."diu nei";
-                            break;
+		$app->server->push(function($message) {
+			if ( $message["MsgType"] == "text" ) {
+				switch ( strtolower($message["Content"]) ) {
+					case "hello":
+					case "from":
+						$fromUserName = $message["FromUserName"];
+						return $fromUserName;
 
-                        /*
-                        case 'file':
-                            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-                            $txt = sprintf("%s %s",$message['FromUserName'], 0);
-                            fwrite($myfile, $txt);
-                            $myfile = fopen("newfile.txt", "r") or die("Unable to open file!");
-                            $content = fread($myfile,filesize("newfile.txt"));
-                            fclose($myfile);
+					case "halo":
+					case "hello2":
+					case "whom":
+						$toUserName = $message["ToUserName"];
+						return $toUserName;
 
-                            return $content;
-                            break;
-                        */
-                        case 'hello':
-                            $userOpenID = $message['FromUserName'];
-                            return $userOpenID;
-                            break;
-                        case 'hello2':
-                            return $message['ToUserName'];
-                            break;
-                        case 'article':
-                            $article = new Article([
-                                'title'   => 'Ben Lau',
-                                'author'  => 'Ben Lau',
-                                'content' => '.. .......'
-                            ]);
-                            return $article;
-                            break;
-                        case 'items':
-                        case 'Item':
-                            $news = createNews::createNews();
-                            return $news;
-                            break;
-                        default:
-                            return "hello Ben";
-                            break;
-                    }
-                case 'image':
-//                    $mediaID = "rpxllVIKNM1p1UjXqePh--y5JDli2zYp9_1SXhS-SJWxW_6VstYv85FvC_9hLxb9";
-                    $mediaID  = $message['MediaId'];
-                    $image = new Image($mediaID);
-                    return $image;
-                case 'event':
-                    switch($message['EventKey']){
-                        case 'items':
-                            $news = createNews::createNews();
-                            return $news;
-                            break;
-                        case 'ben':
-                            // if (stage 1) return ..
-                            // if (stage 2) return ..
+					case "article":
+						$article = new Article([
+							"title"   => "Ben Lau",
+							"author"  => "Ben Lau",
+							"content" => ".. ......."
+						]);
+						return $article;
+						
+          case "raw":
+						$fromUserName = $message["FromUserName"];
+						$toUserName = $message["ToUserName"];
+          	return new Raw(
+							'{"touser":"'.$fromUserName.'","msgtype":"text","text":{"content":"Hello World"}}'
+						);
 
-                            return "ben123412431321";
-                            break;
-                        }
+					case "user":
+						return new Text(json_encode($user));
+						// return $user->get("nickname");
 
-                default:
-                    return
-                        "Thank you for your subscription 1234567";
-            }
-        });
+					case "item":
+					case "items":
+						return new News([
+							new NewsItem([
+								"title" => "OrderlikePnV",
+								"description" => "OrderlikePnV",
+								"url" => "http://www.orderlikepnv.com",
+								"image" => "http://www.orderlikepnv.com/wp-content/uploads/2017/06/transparent-background-Orderlike-black1.png",
+							])
+        		]);
 
-        return $app->server->serve();
-    }
+					case "json":
+					default:
+						return json_encode($message);
+				}
+			}
+			
+			if ( $message["MsgType"] == "image" ) {
+				// $mediaId = "rpxllVIKNM1p1UjXqePh--y5JDli2zYp9_1SXhS-SJWxW_6VstYv85FvC_9hLxb9";
+				$mediaId  = $message["MediaId"];
+				$image = new Image($mediaId);
+				return $image;
+			}
+
+			if ( $message["MsgType"] == "event" ) {
+				switch ( $message["EventKey"] ) {
+					case "items":
+					case "orderlike":
+					case "jrn-process-a":
+					case "jrn-process-b":
+						return "<a href = \"https://www.google.com.hk/\">Journal B</a>"."diu nei";
+						break;
+					case "jrn-process-c":
+					case "jrn-process-d":
+					case "jrn-process-e":
+					case "jrn-process-f":
+					case "jrn-process-g":
+						$fromUserName = $message["FromUserName"];
+						$toUserName = $message["ToUserName"];
+						
+						return new News([
+							new NewsItem([
+								"title" => "OrderlikePnV",
+								"description" => "OrderlikePnV",
+								"url" => "http://www.orderlikepnv.com",
+								"image" => "http://www.orderlikepnv.com/wp-content/uploads/2017/06/transparent-background-Orderlike-black1.png",
+							]),
+							new NewsItem([
+								"title" => "Link D",
+								"description" => "OrderlikePnV",
+								"url" => "http://www.orderlikepnv.com/wp-external/journaling.php?process=d&wechatid=".$fromUserName,
+								"image" => "http://www.orderlikepnv.com/wp-content/uploads/2017/06/transparent-background-Orderlike-black1.png",
+							]),
+							new NewsItem([
+								"title" => "Link E",
+								"description" => "OrderlikePnV",
+								"url" => "http://www.orderlikepnv.com/wp-external/journaling.php?process=e&wechatid=".$fromUserName,
+								"image" => "http://www.orderlikepnv.com/wp-content/uploads/2017/06/transparent-background-Orderlike-black1.png",
+							]),
+							new NewsItem([
+								"title" => "Link F",
+								"description" => "OrderlikePnV",
+								"url" => "http://www.orderlikepnv.com/wp-external/journaling.php?process=f&wechatid=".$fromUserName,
+								"image" => "http://www.orderlikepnv.com/wp-content/uploads/2017/06/transparent-background-Orderlike-black1.png",
+							])
+        		]);
+
+					case "ben":
+					default:
+						return json_encode($message);
+				}
+			}
+			
+			// default
+			return json_encode($message);
+		});
+		
+		return $app->server->serve();
+	}
 }
-
-
-/*
- *
- *
- *                         case 'raw':
-                            $mess = new Raw('<xml>
-<ToUserName><![CDATA[oF2FF0TLLu_P2X0suR0X9iL63wBc]]></ToUserName>
-<FromUserName><![CDATA[gh_0382299d76d0]]></FromUserName>
-<CreateTime>1543481824</CreateTime>
-<MsgType><![CDATA[ text ]]></MsgType>
-<Image>
-<MediaId><![CDATA[ hello ]]></MediaId>
-</Image>
-</xml>');
-
-                        case 'user':
-                            //return "Hello ".$user.". Thank you for your subscription";
-                            return $user->get('nickname');
-
-
- * */
+?>
