@@ -8,8 +8,6 @@ use EasyWeChat\Kernel\Messages;
 use EasyWeChat\Kernel\Messages\Text;
 use EasyWeChat\Kernel\Messages\Image;
 use EasyWeChat\Kernel\Messages\Article;
-// use App\Library\CreateNewMenu;
-// use App\Library\CreateNews;
 use EasyWeChat\Kernel\Messages\NewsItem;
 use EasyWeChat\Kernel\Messages\News;
 use EasyWeChat\Kernel\Messages\Raw;
@@ -17,7 +15,6 @@ use EasyWeChat\Kernel\Messages\Raw;
 class WeChatController extends Controller {
 	public function serve() {
 		$app = app("wechat.official_account");
-        $app->menu->delete(); // 全部
         // $app->menu->delete();
 		$app->menu->create([
 	    [ 
