@@ -112,11 +112,17 @@ class WeChatController extends Controller {
 						return "<a href = \"http://www.orderlikepnv.com/wp-external/wechat-show-jrn.php?ref=300015&jrntax=process-selfiemov-borrow\">Journal B</a>";
 						break;
 					case "jrn-process-c":
-                        return "<a href = \"http://www.orderlikepnv.com/wp-external/wechat-show-jrn.php?ref=300015&jrntax=process-selfiemov-borrow\">Journal B</a>"."Journal B";
+                        return "<a href = \"http://www.orderlikepnv.com/wp-external/wechat-show-jrn.php?ref=300015&jrntax=process-selfiemov-ipad-ready\">Journal C</a>";
                         break;
 					case "jrn-process-d":
+                        return "<a href = \"http://www.orderlikepnv.com/wp-external/wechat-show-jrn.php?ref=300015&jrntax=process-process-selfiemov-borrow\">Journal D</a>";
+                        break;
 					case "jrn-process-e":
+                        return "<a href = \"http://www.orderlikepnv.com/wp-external/wechat-show-jrn.php?ref=300015&jrntax=process-process-selfiemov-return\">Journal E</a>";
+                        break;
 					case "jrn-process-f":
+                        return "<a href = \"http://www.orderlikepnv.com/wp-external/wechat-show-jrn.php?ref=300015&jrntax=process-selfiemov-upload\">Journal F</a>";
+                        break;
 					case "jrn-process-g":
 						$fromUserName = $message["FromUserName"];
 						$toUserName = $message["ToUserName"];
