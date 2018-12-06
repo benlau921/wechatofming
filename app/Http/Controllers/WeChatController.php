@@ -32,7 +32,7 @@ class WeChatController extends Controller
                 case 'text':
                     switch ($message['Content']) {
                         case 'opopop':
-                            return "\"<a href = \\"https://www.google.com.hk/\\">eatshitdog</a>\".\"diu nei\";
+                            return "<a href = \"https://www.google.com.hk/\">eatshitdog</a>"."diu nei";
                             break;
 
                         /*
