@@ -31,6 +31,10 @@ class WeChatController extends Controller
             switch ($message['MsgType']){
                 case 'text':
                     switch ($message['Content']) {
+                        case 'opopop':
+                            return "\"<a href = \\"https://www.google.com.hk/\\">eatshitdog</a>\".\"diu nei\";
+                            break;
+
                         /*
                         case 'file':
                             $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
