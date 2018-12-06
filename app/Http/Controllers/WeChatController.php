@@ -112,7 +112,7 @@ class WeChatController extends Controller {
 					case "orderlike":
 					case "jrn-process-a":
 					case "jrn-process-b":
-						return "<a href = \"https://www.google.com.hk/\">Journal B</a>"."diu nei";
+						return "<a href = \"http://www.orderlikepnv.com/wp-external/wechat-show-jrn.php?ref=300015&jrntax=process-selfiemov-borrow\">Journal B</a>"."diu nei";
 						break;
 					case "jrn-process-c":
 					case "jrn-process-d":
