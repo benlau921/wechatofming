@@ -41,6 +41,7 @@ class WeChatController extends Controller {
 	    	"sub_button" => [
 	      	[ "type" => "click", "name" => "Orderlike", "key" => "orderlike" ],
 	      	[ "type" => "pic_sysphoto", "name" => "Take a photo", "key" => "take-a-photo" ],
+			[ "type" => "pic_sysphoto", "name" => "拍一張照", "key" => "take-a-photo" ],
 	      ],
 	    ],
 	  ]);
