@@ -12,6 +12,7 @@ use EasyWeChat\Kernel\Messages\NewsItem;
 use EasyWeChat\Kernel\Messages\News;
 use EasyWeChat\Kernel\Messages\Raw;
 
+
 class WeChatController extends Controller {
 	public function serve() {
 		$app = app("wechat.official_account");
@@ -50,6 +51,7 @@ class WeChatController extends Controller {
 			if ( $message["MsgType"] == "text" ) {
 				switch ( strtolower($message["Content"]) ) {
 					case "hello":
+						return "你好";
 					case "from":
 						$fromUserName = $message["FromUserName"];
 						return $fromUserName;
